@@ -1,9 +1,9 @@
 package com.example.e_commerceapplication.ui.auth;
 
-import static com.example.e_commerceapplication.general.Constants.ADMIN_MODE;
-import static com.example.e_commerceapplication.general.Constants.USERS;
 import static com.example.e_commerceapplication.classes.users.Admin.adminEmail;
 import static com.example.e_commerceapplication.classes.users.Admin.adminPassword;
+import static com.example.e_commerceapplication.general.Constants.ADMIN_MODE;
+import static com.example.e_commerceapplication.general.Constants.USERS;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,8 +14,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.e_commerceapplication.R;
-import com.example.e_commerceapplication.databinding.ActivityLoginBinding;
 import com.example.e_commerceapplication.database.DataLayer;
+import com.example.e_commerceapplication.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
     DataLayer dataLayer;
@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
                 binding.errorEmail.setVisibility(View.VISIBLE);
             } else {
                 dataLayer.getAuth().sendPasswordResetEmail(binding.email.getText().toString())
-                    .addOnCompleteListener(task -> Toast.makeText(LoginActivity.this, "Reset Password Link has been send to your email.", Toast.LENGTH_SHORT).show());
+                        .addOnCompleteListener(task -> Toast.makeText(LoginActivity.this, "Reset Password Link has been send to your email.", Toast.LENGTH_SHORT).show());
             }
         });
 

@@ -26,7 +26,7 @@ public class RegistrationActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     DataLayer dataLayer;
     ActivityRegistrationBinding binding;
-    private DatePickerDialog datePickerDialog;
+    private DatePickerDialog pickerDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,15 +100,6 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
 
-    private String getTodayDate() {
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        month = month + 1;
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-        return makeDateString(day, month, year);
-    }
-
     private void initDatePicker() {
         DatePickerDialog.OnDateSetListener dateSetListener = (datePicker, year, month, day) -> {
             month = month + 1;
@@ -123,7 +114,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         int style = AlertDialog.THEME_HOLO_LIGHT;
 
-        datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
+        pickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
     }
 
     private String makeDateString(int day, int month, int year) {
@@ -135,6 +126,6 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     public void openDatePicker(View view) {
-        datePickerDialog.show();
+        pickerDialog.show();
     }
 }
