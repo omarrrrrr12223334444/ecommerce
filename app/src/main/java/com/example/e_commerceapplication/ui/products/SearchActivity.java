@@ -15,9 +15,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.e_commerceapplication.adapter.ShowAllAdapter;
-import com.example.e_commerceapplication.databinding.ActivitySearchBinding;
-import com.example.e_commerceapplication.database.DataLayer;
 import com.example.e_commerceapplication.classes.product.AllProducts;
+import com.example.e_commerceapplication.database.DataLayer;
+import com.example.e_commerceapplication.databinding.ActivitySearchBinding;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
@@ -98,7 +98,6 @@ public class SearchActivity extends AppCompatActivity {
                     }
                 });
     }
-
 
 
     @Override

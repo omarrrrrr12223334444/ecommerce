@@ -20,13 +20,7 @@ public class Payment implements Serializable {
         this.userID = userID;
     }
 
-    public String getUserID() {
-        return userID;
-    }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
 
     public double getProductTotalPrice() {
         return productTotalPrice;

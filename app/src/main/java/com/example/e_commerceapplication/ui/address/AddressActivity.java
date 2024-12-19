@@ -15,13 +15,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_commerceapplication.adapter.AddressAdapter;
-import com.example.e_commerceapplication.databinding.ActivityAddressBinding;
-import com.example.e_commerceapplication.database.DataLayer;
 import com.example.e_commerceapplication.classes.address.Address;
+import com.example.e_commerceapplication.classes.product.AllProducts;
 import com.example.e_commerceapplication.classes.product.NewProduct;
 import com.example.e_commerceapplication.classes.product.PopularProduct;
 import com.example.e_commerceapplication.classes.product.Product;
-import com.example.e_commerceapplication.classes.product.AllProducts;
+import com.example.e_commerceapplication.database.DataLayer;
+import com.example.e_commerceapplication.databinding.ActivityAddressBinding;
 import com.example.e_commerceapplication.ui.products.PaymentActivity;
 
 import java.io.Serializable;

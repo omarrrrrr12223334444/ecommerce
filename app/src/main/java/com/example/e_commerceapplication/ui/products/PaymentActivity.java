@@ -17,12 +17,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.e_commerceapplication.R;
-import com.example.e_commerceapplication.database.DataLayer;
+import com.example.e_commerceapplication.classes.product.AllProducts;
 import com.example.e_commerceapplication.classes.product.MyCart;
 import com.example.e_commerceapplication.classes.product.NewProduct;
 import com.example.e_commerceapplication.classes.product.PopularProduct;
 import com.example.e_commerceapplication.classes.product.Product;
-import com.example.e_commerceapplication.classes.product.AllProducts;
+import com.example.e_commerceapplication.database.DataLayer;
 import com.example.e_commerceapplication.ui.dialogs.RatingDialogBar;
 import com.google.firebase.firestore.DocumentSnapshot;
 

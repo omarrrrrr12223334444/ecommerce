@@ -4,14 +4,6 @@ public class Address {
     String address, city, country;
     boolean isSelected;
 
-    public boolean isSelected() {
-        return isSelected;
-    }
-
-    public void setSelected(boolean selected) {
-        isSelected = selected;
-    }
-
     public Address() {
     }
 
@@ -20,6 +12,14 @@ public class Address {
         this.city = city;
         this.country = country;
         this.isSelected = isSelected;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 
     public String getAddress() {
