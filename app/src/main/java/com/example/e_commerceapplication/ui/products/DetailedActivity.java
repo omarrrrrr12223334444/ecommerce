@@ -31,10 +31,10 @@ import java.util.Calendar;
 import java.util.HashMap;
 
 public class DetailedActivity extends AppCompatActivity {
-    int totalQuantity = 1, totalInStock = 0;
-    double totalPrice = 0;
+    int Quantity = 1, totalInStock = 0;
+    double Price = 0;
     String image;
-    Product mainProduct;
+    Product product;
     Animation animation;
     DataLayer dataLayer;
     ActivityDetailedBinding binding;
@@ -51,12 +51,12 @@ public class DetailedActivity extends AppCompatActivity {
 
         final Object object = getIntent().getSerializableExtra("detailed");
 
-        if (object instanceof NewProduct) mainProduct = (NewProduct) object;
-        else if (object instanceof PopularProduct) mainProduct = (PopularProduct) object;
-        else if (object instanceof AllProducts) mainProduct = (AllProducts) object;
-        assert mainProduct != null;
+        if (object instanceof NewProduct) product = (NewProduct) object;
+        else if (object instanceof PopularProduct) product = (PopularProduct) object;
+        else if (object instanceof AllProducts) product = (AllProducts) object;
+        assert product != null;
 
-        initializeView(mainProduct);
+        initializeView(product);
 
         if (ADMIN_MODE) {
             binding.quantity.setVisibility(View.GONE);
@@ -68,33 +68,33 @@ public class DetailedActivity extends AppCompatActivity {
         binding.addToCard.setOnClickListener(v -> addToCard());
 
         binding.imageAddOneItem.setOnClickListener(v -> {
-            if (mainProduct.productTypeConfirm().equals(ProductType.NEW)) {
-                if (totalQuantity < 10 && totalQuantity < totalInStock) {
-                    totalQuantity++;
-                    binding.quantity.setText(String.valueOf(totalQuantity));
-                    totalPrice = mainProduct.getPrice() * totalQuantity;
+            if (product.productTypeConfirm().equals(ProductType.NEW)) {
+                if (Quantity < 10 && Quantity < totalInStock) {
+                    Quantity++;
+                    binding.quantity.setText(String.valueOf(Quantity));
+                    Price = product.getPrice() * Quantity;
                 }
             } else {
-                if (totalQuantity < 10) {
-                    totalQuantity++;
-                    binding.quantity.setText(String.valueOf(totalQuantity));
-                    totalPrice = mainProduct.getPrice() * totalQuantity;
+                if (Quantity < 10) {
+                    Quantity++;
+                    binding.quantity.setText(String.valueOf(Quantity));
+                    Price = product.getPrice() * Quantity;
                 }
             }
         });
 
         binding.imageRemoveOneItem.setOnClickListener(v -> {
-            if (totalQuantity > 1) {
-                totalQuantity--;
-                binding.quantity.setText(String.valueOf(totalQuantity));
+            if (Quantity > 1) {
+                Quantity--;
+                binding.quantity.setText(String.valueOf(Quantity));
             }
         });
 
         binding.exit.setOnClickListener(v -> finish());
         binding.buyNow.setOnClickListener(v -> {
             Intent intent = new Intent(this, AddressActivity.class);
-            intent.putExtra("item", mainProduct);
-            intent.putExtra("quantity", totalQuantity);
+            intent.putExtra("item", product);
+            intent.putExtra("quantity", Quantity);
             startActivity(intent);
         });
     }
@@ -116,7 +116,7 @@ public class DetailedActivity extends AppCompatActivity {
         cartMap.put("productTime", saveCurrentTime);
         cartMap.put("productDate", saveCurrentDate);
         cartMap.put("totalQuantity", Double.parseDouble(binding.quantity.getText().toString()));
-        cartMap.put("totalPrice", totalPrice);
+        cartMap.put("totalPrice", Price);
         cartMap.put("productRate", binding.productDetailRate.getText().toString());
 
         dataLayer.customerDataActivation(cartMap, DetailedActivity.this, ADD_TO_CART);
@@ -153,6 +153,6 @@ public class DetailedActivity extends AppCompatActivity {
         binding.productDetailPrice.setText(String.valueOf(product.getPrice()));
         binding.productDetailRate.setText(product.getRating());
         binding.starRate.setRating(Float.parseFloat(binding.productDetailRate.getText().toString()));
-        totalPrice = product.getPrice() * totalQuantity;
+        Price = product.getPrice() * Quantity;
     }
 }

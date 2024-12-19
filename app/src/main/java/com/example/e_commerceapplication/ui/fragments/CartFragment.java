@@ -18,10 +18,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_commerceapplication.adapter.MyCartAdapter;
-import com.example.e_commerceapplication.ui.address.AddressActivity;
-import com.example.e_commerceapplication.databinding.FragmentCartBinding;
-import com.example.e_commerceapplication.database.DataLayer;
 import com.example.e_commerceapplication.classes.product.MyCart;
+import com.example.e_commerceapplication.database.DataLayer;
+import com.example.e_commerceapplication.databinding.FragmentCartBinding;
+import com.example.e_commerceapplication.ui.address.AddressActivity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -33,6 +33,7 @@ public class CartFragment extends Fragment {
     DataLayer dataLayer;
 
     FragmentCartBinding binding;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
