@@ -21,15 +21,15 @@ import com.example.e_commerceapplication.R;
 import com.example.e_commerceapplication.adapter.CategoryAdapter;
 import com.example.e_commerceapplication.adapter.NewProductsAdapter;
 import com.example.e_commerceapplication.adapter.PopularProductsAdapter;
-import com.example.e_commerceapplication.ui.admin.activities.AdminModificationActivity;
-import com.example.e_commerceapplication.databinding.FragmentHomeBinding;
-import com.example.e_commerceapplication.general.Constants;
-import com.example.e_commerceapplication.database.DataLayer;
 import com.example.e_commerceapplication.classes.product.Category;
 import com.example.e_commerceapplication.classes.product.NewProduct;
 import com.example.e_commerceapplication.classes.product.PopularProduct;
-import com.example.e_commerceapplication.ui.products.ShowAllActivity;
+import com.example.e_commerceapplication.database.DataLayer;
+import com.example.e_commerceapplication.databinding.FragmentHomeBinding;
+import com.example.e_commerceapplication.general.Constants;
+import com.example.e_commerceapplication.ui.admin.activities.AdminModificationActivity;
 import com.example.e_commerceapplication.ui.dialogs.LoadingDialogBar;
+import com.example.e_commerceapplication.ui.products.ShowAllActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,8 +58,7 @@ public class HomeFragment extends Fragment {
 
     @SuppressLint("NotifyDataSetChanged")
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
         homeBinding = FragmentHomeBinding.inflate(inflater);
@@ -70,7 +69,6 @@ public class HomeFragment extends Fragment {
 
         Constants.loadingDialogBar = new LoadingDialogBar(getContext());
         homeBinding.homeLayout.setVisibility(View.GONE);
-
 
 
         //Image Slider Drawing
@@ -93,7 +91,7 @@ public class HomeFragment extends Fragment {
         categories = new ArrayList<>();
         categoryAdapter = new CategoryAdapter(getContext(), categories);
         homeBinding.recCategory.setAdapter(categoryAdapter);
-        dataLayer.categoryDatabase(categories, categoryAdapter,this, homeBinding.homeLayout);
+        dataLayer.categoryDatabase(categories, categoryAdapter, this, homeBinding.homeLayout);
 
 
         //New Product
@@ -101,7 +99,7 @@ public class HomeFragment extends Fragment {
         newProductList = new ArrayList<>();
         newProductsAdapter = new NewProductsAdapter(newProductList, getContext());
         homeBinding.newProductRec.setAdapter(newProductsAdapter);
-        dataLayer.newProductsDatabase(newProductList, newProductsAdapter,this);
+        dataLayer.newProductsDatabase(newProductList, newProductsAdapter, this);
 
 
         //Popular Product
@@ -113,8 +111,8 @@ public class HomeFragment extends Fragment {
 
         //Admin Mode
         if (ADMIN_MODE) {
-           homeBinding.adminModification.setVisibility(View.VISIBLE);
-           homeBinding.adminModification.setOnClickListener(v -> startActivity(new Intent(getContext(), AdminModificationActivity.class)));
+            homeBinding.adminModification.setVisibility(View.VISIBLE);
+            homeBinding.adminModification.setOnClickListener(v -> startActivity(new Intent(getContext(), AdminModificationActivity.class)));
         }
         return homeBinding.getRoot();
     }
