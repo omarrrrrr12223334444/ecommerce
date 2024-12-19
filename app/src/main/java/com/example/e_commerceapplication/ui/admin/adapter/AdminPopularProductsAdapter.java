@@ -22,11 +22,11 @@ import com.example.e_commerceapplication.ui.admin.activities.AdminAddNewProductA
 import java.util.List;
 
 public class AdminPopularProductsAdapter extends RecyclerView.Adapter<AdminPopularProductsAdapter.ViewHolder> {
-    private final List<PopularProduct> popularProductList;
+    private final List<PopularProduct> products;
     private final Context context;
 
-    public AdminPopularProductsAdapter(List<PopularProduct> popularProductList, Context context) {
-        this.popularProductList = popularProductList;
+    public AdminPopularProductsAdapter(List<PopularProduct> products, Context context) {
+        this.products = products;
         this.context = context;
     }
 
@@ -39,12 +39,12 @@ public class AdminPopularProductsAdapter extends RecyclerView.Adapter<AdminPopul
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull AdminPopularProductsAdapter.ViewHolder holder, int position) {
-        Glide.with(context).load(popularProductList.get(position).getImage_url()).into(holder.productImage);
-        holder.productName.setText(popularProductList.get(position).getName());
-        holder.productPrice.setText(String.valueOf(popularProductList.get(position).getPrice()));
+        Glide.with(context).load(products.get(position).getImage_url()).into(holder.productImage);
+        holder.productName.setText(products.get(position).getName());
+        holder.productPrice.setText(String.valueOf(products.get(position).getPrice()));
         holder.item.setOnClickListener(v -> {
             Intent intent = new Intent(context, AdminAddNewProductActivity.class);
-            intent.putExtra("modification", popularProductList.get(position));
+            intent.putExtra("modification", products.get(position));
             context.startActivity(intent);
             ((Activity) context).finish();
         });
@@ -52,7 +52,7 @@ public class AdminPopularProductsAdapter extends RecyclerView.Adapter<AdminPopul
 
     @Override
     public int getItemCount() {
-        return popularProductList.size();
+        return products.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

@@ -13,15 +13,15 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.e_commerceapplication.classes.product.AllProducts;
+import com.example.e_commerceapplication.classes.product.NewProduct;
+import com.example.e_commerceapplication.classes.product.PopularProduct;
+import com.example.e_commerceapplication.database.DataLayer;
+import com.example.e_commerceapplication.databinding.ActivityAdminModificationBinding;
+import com.example.e_commerceapplication.general.Constants;
 import com.example.e_commerceapplication.ui.admin.adapter.AdminNewProductsAdapter;
 import com.example.e_commerceapplication.ui.admin.adapter.AdminPopularProductsAdapter;
 import com.example.e_commerceapplication.ui.admin.adapter.AdminShowAllProductsAdapter;
-import com.example.e_commerceapplication.databinding.ActivityAdminModificationBinding;
-import com.example.e_commerceapplication.general.Constants;
-import com.example.e_commerceapplication.database.DataLayer;
-import com.example.e_commerceapplication.classes.product.NewProduct;
-import com.example.e_commerceapplication.classes.product.PopularProduct;
-import com.example.e_commerceapplication.classes.product.AllProducts;
 
 import java.util.ArrayList;
 import java.util.List;

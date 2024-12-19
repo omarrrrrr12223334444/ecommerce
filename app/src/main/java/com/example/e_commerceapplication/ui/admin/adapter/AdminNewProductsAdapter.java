@@ -21,11 +21,11 @@ import com.example.e_commerceapplication.ui.admin.activities.AdminAddNewProductA
 import java.util.List;
 
 public class AdminNewProductsAdapter extends RecyclerView.Adapter<AdminNewProductsAdapter.ViewHolder> {
-    private final List<NewProduct> newProducts;
+    private final List<NewProduct> products;
     private final Context context;
 
-    public AdminNewProductsAdapter(List<NewProduct> newProducts, Context context) {
-        this.newProducts = newProducts;
+    public AdminNewProductsAdapter(List<NewProduct> products, Context context) {
+        this.products = products;
         this.context = context;
     }
 
@@ -38,19 +38,19 @@ public class AdminNewProductsAdapter extends RecyclerView.Adapter<AdminNewProduc
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull AdminNewProductsAdapter.ViewHolder holder, int position) {
-        Glide.with(context).load(newProducts.get(position).getImage_url()).into(holder.productImage);
-        holder.productName.setText(newProducts.get(position).getName());
-        holder.productPrice.setText(String.valueOf(newProducts.get(position).getPrice()));
+        Glide.with(context).load(products.get(position).getImage_url()).into(holder.productImage);
+        holder.productName.setText(products.get(position).getName());
+        holder.productPrice.setText(String.valueOf(products.get(position).getPrice()));
         holder.item.setOnClickListener(v -> {
             Intent intent = new Intent(context, AdminAddNewProductActivity.class);
-            intent.putExtra("modification", newProducts.get(position));
+            intent.putExtra("modification", products.get(position));
             context.startActivity(intent);
         });
     }
 
     @Override
     public int getItemCount() {
-        return newProducts.size();
+        return products.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
