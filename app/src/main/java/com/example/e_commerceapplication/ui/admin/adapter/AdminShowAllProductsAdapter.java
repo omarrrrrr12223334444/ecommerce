@@ -22,11 +22,11 @@ import com.example.e_commerceapplication.ui.admin.activities.AdminAddNewProductA
 import java.util.List;
 
 public class AdminShowAllProductsAdapter extends RecyclerView.Adapter<AdminShowAllProductsAdapter.ViewHolder> {
-    private final List<AllProducts> allProducts;
+    private final List<AllProducts> products;
     private final Context context;
 
-    public AdminShowAllProductsAdapter(List<AllProducts> allProducts, Context context) {
-        this.allProducts = allProducts;
+    public AdminShowAllProductsAdapter(List<AllProducts> products, Context context) {
+        this.products = products;
         this.context = context;
     }
 
@@ -39,12 +39,12 @@ public class AdminShowAllProductsAdapter extends RecyclerView.Adapter<AdminShowA
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Glide.with(context).load(allProducts.get(position).getImage_url()).into(holder.productImage);
-        holder.productName.setText(allProducts.get(position).getName());
-        holder.productPrice.setText(String.valueOf(allProducts.get(position).getPrice()));
+        Glide.with(context).load(products.get(position).getImage_url()).into(holder.productImage);
+        holder.productName.setText(products.get(position).getName());
+        holder.productPrice.setText(String.valueOf(products.get(position).getPrice()));
         holder.item.setOnClickListener(v -> {
             Intent intent = new Intent(context, AdminAddNewProductActivity.class);
-            intent.putExtra("modification", allProducts.get(position));
+            intent.putExtra("modification", products.get(position));
             context.startActivity(intent);
             ((Activity) context).finish();
         });
@@ -52,7 +52,7 @@ public class AdminShowAllProductsAdapter extends RecyclerView.Adapter<AdminShowA
 
     @Override
     public int getItemCount() {
-        return allProducts.size();
+        return products.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
