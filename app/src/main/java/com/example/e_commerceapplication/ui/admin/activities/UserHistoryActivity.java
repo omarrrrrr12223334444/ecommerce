@@ -25,7 +25,7 @@ import java.util.List;
 public class UserHistoryActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     UserPaymentsHistoryAdapter adapter;
-    List<Payment> payments;
+    List<Payment> paymentList;
     ActivityUserHistoryBinding binding;
 
     @SuppressLint("NotifyDataSetChanged")
@@ -37,7 +37,7 @@ public class UserHistoryActivity extends AppCompatActivity {
 
         recyclerView = binding.historyRec;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        payments = new ArrayList<>();
+        paymentList = new ArrayList<>();
 
         DataLayer dataLayer = new DataLayer(USERS);
 
@@ -50,13 +50,13 @@ public class UserHistoryActivity extends AppCompatActivity {
                     .collection(USER).get().addOnCompleteListener(pay -> pay.getResult()
                             .getDocuments().forEach(task1 -> {
                                 Payment payment = task1.toObject(Payment.class);
-                                payments.add(payment);
+                                paymentList.add(payment);
                                 adapter.notifyDataSetChanged();
-                                Log.i("FashionLogging", payments.get(0).getProductName());
+                                Log.i("FashionLogging", paymentList.get(0).getProductName());
                             }));
         }));
 
-        adapter = new UserPaymentsHistoryAdapter(payments);
+        adapter = new UserPaymentsHistoryAdapter(paymentList);
         recyclerView.setAdapter(adapter);
 
         binding.exit.setOnClickListener(v -> finish());

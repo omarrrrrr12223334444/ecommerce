@@ -12,9 +12,9 @@ import com.anychart.AnyChart;
 import com.anychart.chart.common.dataentry.DataEntry;
 import com.anychart.chart.common.dataentry.ValueDataEntry;
 import com.anychart.charts.Pie;
-import com.example.e_commerceapplication.databinding.ActivityUsersFeedbackBinding;
-import com.example.e_commerceapplication.database.DataLayer;
 import com.example.e_commerceapplication.classes.users.User;
+import com.example.e_commerceapplication.database.DataLayer;
+import com.example.e_commerceapplication.databinding.ActivityUsersFeedbackBinding;
 
 import java.util.ArrayList;
 
