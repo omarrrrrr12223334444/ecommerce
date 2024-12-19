@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/new_bg"
     tools:context=".ui.fragments.HomeFragment">
 
@@ -18,25 +18,25 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/new_green"
             android:clickable="true"
-            android:visibility="gone"
+            android:contentDescription="TODO"
             android:src="@drawable/baseline_add_circle_24"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.97"
-            app:layout_constraintVertical_bias="0.90"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="TODO" />
+            app:layout_constraintVertical_bias="0.90" />
 
         <LinearLayout
             android:id="@+id/home_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.denzcoskun.imageslider.ImageSlider
                 android:id="@+id/image_slider"
@@ -85,8 +85,8 @@
                 android:layout_height="110dp"
                 android:layout_marginStart="9dp"
                 android:layout_marginTop="10dp"
-                tools:listitem="@layout/category_list"
-                tools:itemCount="1"/>
+                tools:itemCount="1"
+                tools:listitem="@layout/category_list" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -123,8 +123,8 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_marginEnd="8dp"
-                            android:gravity="end"
                             android:fontFamily="@font/roboto_flex"
+                            android:gravity="end"
                             android:text="@string/see_all"
                             android:textColor="@color/g_gray900"
                             android:textSize="18sp"
@@ -137,9 +137,9 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="7dp"
                         android:layout_marginTop="6dp"
-                        tools:listitem="@layout/new_products"
+                        android:padding="5dp"
                         tools:itemCount="1"
-                        android:padding="5dp" />
+                        tools:listitem="@layout/new_products" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>

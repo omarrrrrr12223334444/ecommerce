@@ -12,24 +12,24 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.e_commerceapplication.ui.auth.RegistrationActivity;
+import com.example.e_commerceapplication.database.DataLayer;
 import com.example.e_commerceapplication.databinding.FragmentProfileBinding;
 import com.example.e_commerceapplication.ui.activities.TermsActivity;
 import com.example.e_commerceapplication.ui.admin.activities.UserHistoryActivity;
 import com.example.e_commerceapplication.ui.admin.activities.UsersFeedbackActivity;
-import com.example.e_commerceapplication.database.DataLayer;
+import com.example.e_commerceapplication.ui.auth.RegistrationActivity;
 
 public class ProfileFragment extends Fragment {
     DataLayer dataLayer;
     FragmentProfileBinding binding;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentProfileBinding.inflate(inflater);
 //        View view = inflater.inflate(R.layout.fragment_profile, container, false);
