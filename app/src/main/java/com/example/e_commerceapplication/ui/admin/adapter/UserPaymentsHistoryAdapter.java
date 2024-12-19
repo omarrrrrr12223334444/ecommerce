@@ -17,10 +17,10 @@ import java.text.NumberFormat;
 import java.util.List;
 
 public class UserPaymentsHistoryAdapter extends RecyclerView.Adapter<UserPaymentsHistoryAdapter.ViewHolder> {
-    private final List<Payment> payments;
+    private final List<Payment> paymentList;
 
-    public UserPaymentsHistoryAdapter(List<Payment> payments) {
-        this.payments = payments;
+    public UserPaymentsHistoryAdapter(List<Payment> paymentList) {
+        this.paymentList = paymentList;
     }
 
     @NonNull
@@ -32,17 +32,17 @@ public class UserPaymentsHistoryAdapter extends RecyclerView.Adapter<UserPayment
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.creditHolderName.setText(payments.get(position).getCreditCardHolderName());
-        holder.name.setText(payments.get(position).getProductName());
-        holder.rate.setText(payments.get(position).getProductRate());
+        holder.creditHolderName.setText(paymentList.get(position).getCreditCardHolderName());
+        holder.name.setText(paymentList.get(position).getProductName());
+        holder.rate.setText(paymentList.get(position).getProductRate());
         NumberFormat formatter = new DecimalFormat("#0.00");
-        holder.price.setText(String.format("$%s", formatter.format(payments.get(position).getProductTotalPrice())));
-        holder.quantity.setText("Quantity: " + payments.get(position).getProductQuantity());
+        holder.price.setText(String.format("$%s", formatter.format(paymentList.get(position).getProductTotalPrice())));
+        holder.quantity.setText("Quantity: " + paymentList.get(position).getProductQuantity());
     }
 
     @Override
     public int getItemCount() {
-        return payments.size();
+        return paymentList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

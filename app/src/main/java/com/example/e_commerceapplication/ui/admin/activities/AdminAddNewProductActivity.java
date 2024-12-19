@@ -38,7 +38,7 @@ import java.util.Objects;
 
 public class AdminAddNewProductActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     ActivityAdminAddNewProductBinding binding;
-    String type, collection, productType;
+    String itemType, collectionName, productType;
     int stock;
     DataLayer dataLayer;
     Uri image;
@@ -90,16 +90,16 @@ public class AdminAddNewProductActivity extends AppCompatActivity implements Ada
                 case NEW: {
                     binding.numberOfStock.setVisibility(View.VISIBLE);
                     binding.numberOfStock.setText(String.valueOf(mainProduct.getStock()));
-                    collection = NEW_PRODUCTS;
+                    collectionName = NEW_PRODUCTS;
                 }
                 break;
                 case ALL: {
                     binding.numberOfStock.setVisibility(View.GONE);
-                    collection = SHOW_ALL;
+                    collectionName = SHOW_ALL;
                 }
                 case POPULAR: {
                     binding.numberOfStock.setVisibility(View.GONE);
-                    collection = POPULAR_PRODUCTS;
+                    collectionName = POPULAR_PRODUCTS;
                 }
                 break;
             }
@@ -113,17 +113,17 @@ public class AdminAddNewProductActivity extends AppCompatActivity implements Ada
             switch (Objects.requireNonNull(productType)) {
                 case "NEW": {
                     mainProduct = new NewProduct();
-                    collection = NEW_PRODUCTS;
+                    collectionName = NEW_PRODUCTS;
                 }
                 break;
                 case "POPULAR": {
                     mainProduct = new PopularProduct();
-                    collection = POPULAR_PRODUCTS;
+                    collectionName = POPULAR_PRODUCTS;
                 }
                 break;
                 case "ALL": {
                     mainProduct = new AllProducts();
-                    collection = SHOW_ALL;
+                    collectionName = SHOW_ALL;
                 }
                 break;
             }
@@ -140,7 +140,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity implements Ada
                     stock = Integer.parseInt(binding.numberOfStock.getText().toString());
                 else
                     stock = 0;
-                uploadFirebase(name, rate, price, description, type, image);
+                uploadFirebase(name, rate, price, description, itemType, image);
             } else {
                 if (image != null) {
                     String name = binding.addNewProductName.getText().toString();
@@ -151,7 +151,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity implements Ada
                         stock = Integer.parseInt(binding.numberOfStock.getText().toString());
                     else
                         stock = 0;
-                    uploadFirebase(name, rate, price, description, type, image);
+                    uploadFirebase(name, rate, price, description, itemType, image);
                 } else {
                     Toast.makeText(this, "Please Select Image For Your New Product", Toast.LENGTH_SHORT).show();
                 }
@@ -173,12 +173,12 @@ public class AdminAddNewProductActivity extends AppCompatActivity implements Ada
                 updatedProduct.put("stock", stock);
             }
 
-            dataLayer.getFireStore().collection(collection).whereEqualTo("image_url", mainProduct.getImage_url())
+            dataLayer.getFireStore().collection(collectionName).whereEqualTo("image_url", mainProduct.getImage_url())
                     .get()
                     .addOnCompleteListener(task -> {
                         DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
                         String id = documentSnapshot.getId();
-                        dataLayer.getFireStore().collection(collection).document(id)
+                        dataLayer.getFireStore().collection(collectionName).document(id)
                                 .update(updatedProduct).addOnCompleteListener(task2 -> {
                                     startActivity(new Intent(this, MainActivity.class));
                                     finish();
@@ -196,7 +196,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity implements Ada
                         mainProduct.setName(name);
                         mainProduct.setType(type);
                         mainProduct.setStock(stock);
-                        dataLayer.getFireStore().collection(collection).add(mainProduct).addOnCompleteListener(task2 -> finish());
+                        dataLayer.getFireStore().collection(collectionName).add(mainProduct).addOnCompleteListener(task2 -> finish());
                     }));
         }
     }
@@ -211,7 +211,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity implements Ada
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        type = parent.getItemAtPosition(position).toString();
+        itemType = parent.getItemAtPosition(position).toString();
     }
 
     @Override
