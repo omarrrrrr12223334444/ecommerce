@@ -16,9 +16,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.example.e_commerceapplication.database.DataLayer;
 import com.example.e_commerceapplication.databinding.ActivityAddAddressBinding;
 import com.example.e_commerceapplication.general.Constants;
-import com.example.e_commerceapplication.database.DataLayer;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 
