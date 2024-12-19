@@ -1,8 +1,5 @@
 package com.example.e_commerceapplication.ui.auth;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -10,6 +7,9 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.e_commerceapplication.R;
 import com.example.e_commerceapplication.adapter.SliderAdapter;
@@ -74,6 +74,7 @@ public class OnBoardingActivity extends AppCompatActivity {
             binding.dots.addView(dots[i]);
             i++;
         }
-        if (dots.length > 0) dots[position].setTextColor(getResources().getColor(R.color.g_dark_blue));
+        if (dots.length > 0)
+            dots[position].setTextColor(getResources().getColor(R.color.g_dark_blue));
     }
 }
